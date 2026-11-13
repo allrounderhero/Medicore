@@ -11,7 +11,7 @@ class Patient(models.Model):
         return self.name
 class Doctor(models.Model):
     name = models.CharField(max_length=100)
-    specilization = models.CharField(max_length=100)
+    specialization = models.CharField(max_length=100)
     def __str__(self):
         return self.name
 class Appoinment(models.Model):
