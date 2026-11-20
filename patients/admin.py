@@ -31,7 +31,7 @@ class AppoinmentAdmin(admin.ModelAdmin):
         "appoinment_date",
         "reason"
     )
-    search_fields = ("patient__name", "doctor__name", "reason")
+    search_fields = ("patient__name", "doctor__name", "reason","appoinment_date")
     
 
 
