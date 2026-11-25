@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .forms import PatientModelForm
+from .models import Patient
+from .serializers import PatientSerializer
+
 # Create your views here.
 def home(request):
     context = {
@@ -31,3 +37,9 @@ def patient_success(request):
         request,
         "patients/success.html"
     )
+
+@api_view(["GET"])
+def patient_list_api(request):
+    patients = Patient.objects.all()
+    serializer = PatientSerializer(patients, many=True)
+    return Response(serializer.data)
